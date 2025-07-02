@@ -1,38 +1,34 @@
+from langchain.chat_models import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
-from langchain_ollama.llms import OllamaLLM
 import streamlit as st
+import os
+
+# Load OpenAI key from environment variable
+openai_api_key = os.getenv("OPENAI_API_KEY")
 
 # Set the app title
-st.title("Meruva GPT using DeepSeek-R1")
+st.title("Meruva GPT using OpenAI")
 
 # Define the prompt template
 template = """Question: {question}
 
 Answer: Let's think step by step."""
 
-# Create the prompt template using the given template
 prompt = ChatPromptTemplate.from_template(template)
 
-# Initialize the model (uncomment the correct model depending on your choice)
-# model = OllamaLLM(model="llama3.1")
-model = OllamaLLM(model="deepseek-r1")
+# Initialize the OpenAI model
+model = ChatOpenAI(openai_api_key=openai_api_key, temperature=0.7)
 
-# Create a chain with the prompt and the model
+# Create the chain
 chain = prompt | model
 
-# Use text_input to capture user question
+# Input from user
 question = st.text_input("Enter your question here")
 
-# If the user has entered a question, format the prompt and invoke the chain
 if question:
     try:
-        # Format the input question with the template
         formatted_prompt = prompt.format(question=question)
-        
-        # Pass the formatted prompt directly to the model
         response = chain.invoke(formatted_prompt)
-        
-        # Display the response from the model
-        st.write(response)
+        st.write(response.content)
     except Exception as e:
         st.write(f"Error: {e}")
