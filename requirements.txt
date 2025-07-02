@@ -1,4 +1,5 @@
 langchain_ollama
+langchain-community
 openai
 langchain
 streamlit
