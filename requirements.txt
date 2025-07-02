@@ -1,3 +1,6 @@
-streamlit
-langchain==0.3.26
 langchain_ollama
+openai
+langchain
+streamlit
+deepseek
+deepseek-r1
