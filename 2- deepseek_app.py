@@ -13,9 +13,8 @@ Answer: Let's think step by step."""
 # Create the prompt template using the given template
 prompt = ChatPromptTemplate.from_template(template)
 
-# Initialize the model (uncomment the correct model depending on your choice)
-# model = OllamaLLM(model="llama3.1")
-model = OllamaLLM(model="deepseek-r1")
+# Initialize the model with the external Ollama server URL
+model = OllamaLLM(model="deepseek-r1", base_url="http://<your-ollama-server-ip>:11434")
 
 # Create a chain with the prompt and the model
 chain = prompt | model
