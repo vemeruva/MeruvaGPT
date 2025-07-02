@@ -2,6 +2,7 @@ langchain_ollama
 langchain-community
 openai
 langchain
+ollama run deepseek-r1
 streamlit
 deepseek
 deepseek-r1
