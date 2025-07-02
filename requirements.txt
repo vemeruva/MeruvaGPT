@@ -1,2 +1,3 @@
-langchain_ollama
+streamlit
 langchain
+langchain_ollama
