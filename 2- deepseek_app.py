@@ -3,6 +3,7 @@ from langchain_ollama.llms import OllamaLLM
 import streamlit as st
 import os
 import logging
+import httpx
 
 # Enable debug logging for httpx
 logging.basicConfig(level=logging.DEBUG)
